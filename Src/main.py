@@ -2,7 +2,9 @@ import pygame as pg
 import sys
 from os import path
 from settings import *
-from sprites import *
+from Terrain import *
+from Robot import *
+
 
 class Game:
     def __init__(self):
@@ -16,7 +18,7 @@ class Game:
     def load_data(self):
         game_folder = path.dirname(__file__)
         self.map_data = []
-        with open(path.join(game_folder, 'map.txt'), 'rt') as f:
+        with open(path.join(game_folder, 'maze.txt'), 'rt') as f:
             for line in f:
                 self.map_data.append(line)
 
@@ -27,9 +29,13 @@ class Game:
         for row, tiles in enumerate(self.map_data):
             for col, tile in enumerate(tiles):
                 if tile == '1':
-                    Wall(self, col, row)
+                    Wall(self, col, row,4)
                 if tile == 'P':
                     self.player = Player(self, col, row)
+                if tile == 'S':
+                    print('Start Line')
+                if tile == 'F':
+                    print('Finish Line')
 
     def run(self):
         # game loop - set self.playing = False to end the game
@@ -56,7 +62,6 @@ class Game:
 
     def draw(self):
         self.screen.fill(BGCOLOR)
-        self.draw_grid()
         self.all_sprites.draw(self.screen)
         pg.display.flip()
 
@@ -82,3 +87,4 @@ while True:
     g.new()
     g.run()
     g.show_go_screen()
+

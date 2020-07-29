@@ -1,15 +1,13 @@
 import pygame as pg
 from settings import *
 
-
-
 class Player(pg.sprite.Sprite):
     def __init__(self, game, x, y):
         self.groups = game.all_sprites
         pg.sprite.Sprite.__init__(self, self.groups)
         self.game = game
-        self.image = pg.Surface((TILESIZE, TILESIZE))
-        self.image.fill(YELLOW)
+        self.image = pg.Surface((TILESIZE-6, TILESIZE-6))
+        self.image.fill(WHITE)
         self.rect = self.image.get_rect()
         self.vx, self.vy = 0, 0
         self.x = x * TILESIZE
@@ -34,21 +32,23 @@ class Player(pg.sprite.Sprite):
         if dir == 'x':
             hits = pg.sprite.spritecollide(self, self.game.walls, False)
             if hits:
-                if self.vx > 0:
-                    self.x = hits[0].rect.left - self.rect.width
-                if self.vx < 0:
-                    self.x = hits[0].rect.right
-                self.vx = 0
-                self.rect.x = self.x
+                if(hits[0].type == 1):
+                    if self.vx > 0:
+                        self.x = hits[0].rect.left - self.rect.width
+                    if self.vx < 0:
+                        self.x = hits[0].rect.right
+                    self.vx = 0
+                    self.rect.x = self.x
         if dir == 'y':
             hits = pg.sprite.spritecollide(self, self.game.walls, False)
             if hits:
-                if self.vy > 0:
-                    self.y = hits[0].rect.top - self.rect.height
-                if self.vy < 0:
-                    self.y = hits[0].rect.bottom
-                self.vy = 0
-                self.rect.y = self.y
+                if (hits[0].type == 1):
+                    if self.vy > 0:
+                        self.y = hits[0].rect.top - self.rect.height
+                    if self.vy < 0:
+                        self.y = hits[0].rect.bottom
+                    self.vy = 0
+                    self.rect.y = self.y
 
     def update(self):
         self.get_keys()
@@ -58,16 +58,3 @@ class Player(pg.sprite.Sprite):
         self.collide_with_walls('x')
         self.rect.y = self.y
         self.collide_with_walls('y')
-
-class Wall(pg.sprite.Sprite):
-    def __init__(self, game, x, y):
-        self.groups = game.all_sprites, game.walls
-        pg.sprite.Sprite.__init__(self, self.groups)
-        self.game = game
-        self.image = pg.Surface((TILESIZE, TILESIZE))
-        self.image.fill(GREEN)
-        self.rect = self.image.get_rect()
-        self.x = x
-        self.y = y
-        self.rect.x = x * TILESIZE
-        self.rect.y = y * TILESIZE
