@@ -15,9 +15,9 @@ class Wall(pg.sprite.Sprite):
         self.type = type
 
         if (type == 1):
-            self.image.fill(PURPLE)
-        elif (type == 2):
             self.image.fill(RED)
+        elif (type == 2):
+            self.image.fill(PURPLE)
         elif (type == 3):
             self.image.fill(GREEN)
         elif (type == 4):
