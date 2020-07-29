@@ -24,27 +24,24 @@ class Game:
         with open(path.join(game_folder, 'maze.txt'), 'rt') as f:
             for line in f:
                 self.map_data.append(line)
+        print(self.map_data)
 
     def new(self):
         # initialize all variables and do all the setup for a new game
         self.all_sprites = pg.sprite.Group()
         self.walls = pg.sprite.Group()
+        self.terrain = pg.sprite.Group()
         for row, tiles in enumerate(self.map_data):
             for col, tile in enumerate(tiles):
                 if tile == '.':
                     self.setTerrain(col,row)
                 if tile == '1':
-                    Wall(self, col, row,1)
-                if tile == '2':
-                    Wall(self, col, row,2)
-                if tile == '3':
-                    Wall(self, col, row,3)
-                if tile == '4':
-                    Wall(self, col, row,4)
+                    Wall(self, col, row)
                 if tile == 'P':
                     self.player = Player(self, col, row)
                 if tile == 'F':
                     print('Finish Line')
+        print(self.walls)
 
     def setTerrain(self,col, row):
         rand = random.randint(0,100)
@@ -52,17 +49,17 @@ class Game:
             if (rand <= 90):
                 return
             elif (rand > 90 and rand <= 95):
-                Wall(self,col,row,2)
+                Terrain(self,col,row,2)
             else:
-                Wall(self,col,row,3)
+                Terrain(self,col,row,3)
 
         if (self.difficulty == 2):
             if (rand <= 60):
                 return
             elif (rand > 60 and rand <= 80):
-                Wall(self,col,row,2)
+                Terrain(self,col,row,2)
             else:
-                Wall(self,col,row,3)
+                Terrain(self,col,row,3)
 
         if (self.difficulty == 3):
             if (rand <= 60):

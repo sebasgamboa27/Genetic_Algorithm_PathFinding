@@ -32,23 +32,23 @@ class Player(pg.sprite.Sprite):
         if dir == 'x':
             hits = pg.sprite.spritecollide(self, self.game.walls, False)
             if hits:
-                if(hits[0].type == 1):
-                    if self.vx > 0:
-                        self.x = hits[0].rect.left - self.rect.width
-                    if self.vx < 0:
-                        self.x = hits[0].rect.right
-                    self.vx = 0
-                    self.rect.x = self.x
+
+                if self.vx > 0:
+                    self.x = hits[0].rect.left - self.rect.width
+                if self.vx < 0:
+                    self.x = hits[0].rect.right
+                self.vx = 0
+                self.rect.x = self.x
         if dir == 'y':
             hits = pg.sprite.spritecollide(self, self.game.walls, False)
             if hits:
-                if (hits[0].type == 1):
-                    if self.vy > 0:
-                        self.y = hits[0].rect.top - self.rect.height
-                    if self.vy < 0:
-                        self.y = hits[0].rect.bottom
-                    self.vy = 0
-                    self.rect.y = self.y
+
+                if self.vy > 0:
+                    self.y = hits[0].rect.top - self.rect.height
+                if self.vy < 0:
+                    self.y = hits[0].rect.bottom
+                self.vy = 0
+                self.rect.y = self.y
 
     def update(self):
         self.get_keys()
