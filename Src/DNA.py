@@ -40,7 +40,7 @@ class DNA(object):
                                weights=(self.array[0][0], self.array[0][1],
                                         self.array[0][2], self.array[0][3]), k=1)
 
-                if direction in available:
+                if direction[0] in available:
                     choiceMade = direction
 
             elif currentState == 'top':
@@ -48,7 +48,7 @@ class DNA(object):
                                weights=(self.array[1][0], self.array[1][1],
                                         self.array[1][2], self.array[1][3]), k=1)
 
-                if direction in available:
+                if direction[0] in available:
                     choiceMade = direction
 
             elif currentState == 'left':
@@ -56,7 +56,7 @@ class DNA(object):
                                            weights=(self.array[2][0], self.array[2][1],
                                                     self.array[2][2], self.array[2][3]), k=1)
 
-                if direction in available:
+                if direction[0] in available:
                     choiceMade = direction
 
             else:
@@ -64,6 +64,7 @@ class DNA(object):
                                            weights=(self.array[3][0], self.array[3][1],
                                                     self.array[3][2], self.array[3][3]), k=1)
 
-                if direction in available:
+                if direction[0] in available:
                     choiceMade = direction
 
+        return choiceMade
