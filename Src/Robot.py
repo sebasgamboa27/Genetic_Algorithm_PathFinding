@@ -7,7 +7,7 @@ from Camera import *
 from DNA import *
 
 class Player(pg.sprite.Sprite):
-    def __init__(self, game, x, y,motorLvl,batteryLvl,cameraLvl,id):
+    def __init__(self, game, x, y,id):
         self.groups = game.all_sprites
         pg.sprite.Sprite.__init__(self, self.groups)
         self.game = game
@@ -19,12 +19,12 @@ class Player(pg.sprite.Sprite):
         self.y = y * TILESIZE
         self.logicX = x
         self.logicY = y
-        self.camera = None
-        self.motor = Motor(self,motorLvl,batteryLvl)
         self.behavior = DNA()
+        self.camera = None
+        self.motor = Motor(self,self.behavior.array[4][0],self.behavior.array[4][1])
         self.possibleMoves = []
         self.currentTile = None
-        self.cameraLvl = cameraLvl
+        self.cameraLvl = self.behavior.array[4][2]
         self.nxtMove = "top"
         self.pastMove = ""
         self.moveThread = threading.Thread(target= self.movement)
@@ -99,6 +99,7 @@ class Player(pg.sprite.Sprite):
                 self.pastMove = "right"
 
             time.sleep(1)
+            self.motor.battery.consumeBattery(2)
             self.nxtMove = self.behavior.choosePath(self.possibleMoves,self.pastMove)[0]
             print(self.nxtMove)
 
@@ -163,3 +164,4 @@ class Player(pg.sprite.Sprite):
             print(self.possibleMoves)
             print(self.nxtMove)
             self.vx, self.vy = 0, 0
+            print(self.motor.battery.batteryPercentage)

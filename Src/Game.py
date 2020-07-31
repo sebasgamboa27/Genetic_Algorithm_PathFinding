@@ -45,7 +45,7 @@ class Game:
                 if tile == 'P':
                     Terrain(self,col,row,1)
                     for i in range(self.genSize):
-                        self.generation.append(Player(self, col, row,3,3,3,i))
+                        self.generation.append(Player(self, col, row,i))
                 if tile == 'F':
                     print('Finish Line')
         for i in range(self.genSize):
