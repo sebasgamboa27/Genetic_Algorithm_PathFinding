@@ -1,6 +1,7 @@
 class Battery:
     def __init__(self,batteryLvl):
         self.batteryCapacity = 0
+        self.batteryLvl = batteryLvl
         if(batteryLvl == 1):
             self.batteryCapacity = 100
         if (batteryLvl == 2):

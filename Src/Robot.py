@@ -20,6 +20,7 @@ class Player(pg.sprite.Sprite):
         self.motor = Motor(motorLvl,batteryLvl)
         self.behavior = None
         self.possibleMoves = []
+        self.pastMove = ""
         self.currentTile = None
         self.cameraLvl = cameraLvl
 
@@ -96,4 +97,3 @@ class Player(pg.sprite.Sprite):
             self.collide_with_walls('y')
             self.collide_with_terrain()
             self.possibleMoves = self.camera.findNxtMove()
-            print(self.possibleMoves)

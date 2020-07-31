@@ -42,7 +42,7 @@ class Game:
                     Wall(self, col, row)
                 if tile == 'P':
                     Terrain(self,col,row,1)
-                    self.player = Player(self, col, row,3,3,1)
+                    self.player = Player(self, col, row,3,3,3)
                 if tile == 'F':
                     print('Finish Line')
         self.player.configure(logicMaze)
