@@ -10,7 +10,7 @@ from Robot import *
 
 
 class Game:
-    def __init__(self,difficulty):
+    def __init__(self,difficulty,genSize):
         pg.init()
         self.screen = pg.display.set_mode((WIDTH, HEIGHT))
         pg.display.set_caption(TITLE)
@@ -18,6 +18,8 @@ class Game:
         pg.key.set_repeat(500, 100)
         self.load_data()
         self.difficulty = difficulty
+        self.generation = []
+        self.genSize = genSize
 
     def load_data(self):
         game_folder = path.dirname(__file__)
@@ -42,10 +44,12 @@ class Game:
                     Wall(self, col, row)
                 if tile == 'P':
                     Terrain(self,col,row,1)
-                    self.player = Player(self, col, row,3,3,3)
+                    for i in range(self.genSize):
+                        self.generation.append(Player(self, col, row,3,3,3,i))
                 if tile == 'F':
                     print('Finish Line')
-        self.player.configure(logicMaze)
+        for i in range(self.genSize):
+            self.generation[i].configure(logicMaze)
 
     def setTerrain(self,col, row):
         rand = random.randint(0,100)

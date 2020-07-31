@@ -1,4 +1,5 @@
 import random
+from Robot import *
 
 class DNA(object):
     def __init__(self, genes=None):
@@ -30,12 +31,12 @@ class DNA(object):
 
     def choosePath(self,available,currentState):
 
-        choices = ['right','top','left','down']
+        choices = ["right","top","left","down"]
         choiceMade = None
 
         while choiceMade is None:
 
-            if currentState == 'right':
+            if currentState == "right":
                 direction = random.choices(choices,
                                weights=(self.array[0][0], self.array[0][1],
                                         self.array[0][2], self.array[0][3]), k=1)
@@ -43,7 +44,7 @@ class DNA(object):
                 if direction[0] in available:
                     choiceMade = direction
 
-            elif currentState == 'top':
+            elif currentState == "top":
                 direction = random.choices(choices,
                                weights=(self.array[1][0], self.array[1][1],
                                         self.array[1][2], self.array[1][3]), k=1)
@@ -51,7 +52,7 @@ class DNA(object):
                 if direction[0] in available:
                     choiceMade = direction
 
-            elif currentState == 'left':
+            elif currentState == "left":
                 direction = random.choices(choices,
                                            weights=(self.array[2][0], self.array[2][1],
                                                     self.array[2][2], self.array[2][3]), k=1)

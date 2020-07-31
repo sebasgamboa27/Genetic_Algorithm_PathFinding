@@ -1,14 +1,17 @@
 import pygame as pg
+import threading
+import time
 from settings import *
 from Motor import *
 from Camera import *
+from DNA import *
 
 class Player(pg.sprite.Sprite):
-    def __init__(self, game, x, y,motorLvl,batteryLvl,cameraLvl):
+    def __init__(self, game, x, y,motorLvl,batteryLvl,cameraLvl,id):
         self.groups = game.all_sprites
         pg.sprite.Sprite.__init__(self, self.groups)
         self.game = game
-        self.image = pg.Surface((TILESIZE-6, TILESIZE-6))
+        self.image = pg.Surface((TILESIZE, TILESIZE))
         self.image.fill(WHITE)
         self.rect = self.image.get_rect()
         self.vx, self.vy = 0, 0
@@ -17,16 +20,22 @@ class Player(pg.sprite.Sprite):
         self.logicX = x
         self.logicY = y
         self.camera = None
-        self.motor = Motor(motorLvl,batteryLvl)
-        self.behavior = None
+        self.motor = Motor(self,motorLvl,batteryLvl)
+        self.behavior = DNA()
         self.possibleMoves = []
-        self.pastMove = ""
         self.currentTile = None
         self.cameraLvl = cameraLvl
+        self.nxtMove = "top"
+        self.pastMove = ""
+        self.moveThread = threading.Thread(target= self.movement)
+        self.id = id
+
+
 
     def configure(self,logicMaze):
         pos = (self.logicX,self.logicY)
         self.camera = Camera(logicMaze,pos,self.cameraLvl)
+        self.moveThread.start()
 
     def get_keys(self):
         self.vx, self.vy = 0, 0
@@ -42,6 +51,61 @@ class Player(pg.sprite.Sprite):
         if self.vx != 0 and self.vy != 0:
             self.vx *= 0.7071
             self.vy *= 0.7071
+
+    def advance(self,case):
+        self.vx, self.vy = 0, 0
+
+        if case == 1:
+            self.vx = -PLAYER_SPEED
+        if case == 2:
+            self.vx = PLAYER_SPEED
+        if case == 3:
+            self.vy = -PLAYER_SPEED
+        if case == 4:
+            self.vy = PLAYER_SPEED
+        if self.vx != 0 and self.vy != 0:
+            self.vx *= 0.7071
+            self.vy *= 0.7071
+
+
+    def movement(self):
+        while(self.motor):
+            if(self.nxtMove == "top"):
+                newY = self.y - 35
+                while(self.y != newY):
+                    self.advance(3)
+                self.pastMove = "top"
+
+
+            elif (self.nxtMove == "down"):
+                newY = self.y + 35
+                while (self.y != newY):
+                    self.advance(4)
+
+                self.pastMove = "down"
+
+            elif (self.nxtMove == "left"):
+                newX = self.x - 35
+                while (self.x != newX):
+                    self.advance(1)
+
+                self.pastMove = "left"
+
+            elif (self.nxtMove == "right"):
+                newX = self.x + 35
+                while (self.x != newX):
+                    self.advance(2)
+
+                self.pastMove = "right"
+
+            time.sleep(1)
+            self.nxtMove = self.behavior.choosePath(self.possibleMoves,self.pastMove)[0]
+            print(self.nxtMove)
+
+
+
+
+
 
     def collide_with_walls(self, dir):
         if dir == 'x':
@@ -88,12 +152,14 @@ class Player(pg.sprite.Sprite):
 
     def update(self):
         if (self.motor.state):
-            self.get_keys()
-            self.x += self.vx * self.game.dt
-            self.y += self.vy * self.game.dt
+            self.x += self.vx
+            self.y += self.vy
             self.rect.x = self.x
             self.collide_with_walls('x')
             self.rect.y = self.y
             self.collide_with_walls('y')
             self.collide_with_terrain()
             self.possibleMoves = self.camera.findNxtMove()
+            print(self.possibleMoves)
+            print(self.nxtMove)
+            self.vx, self.vy = 0, 0

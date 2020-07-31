@@ -13,25 +13,24 @@ class Camera:
             if self.logicMaze[self.y][self.x+1] == 0:
                 possibleMoves += ['right']
         except:
-            print("Se acabo el mapa")
-
+            None
         try:
             if self.logicMaze[self.y][self.x-1] == 0:
                 possibleMoves += ['left']
         except:
-            print("Se acabo el mapa")
+            None
 
         try:
             if self.logicMaze[self.y+1][self.x] == 0:
                 possibleMoves += ['down']
         except:
-            print("Se acabo el mapa")
+            None
 
         try:
             if self.logicMaze[self.y-1][self.x] == 0:
                 possibleMoves += ['top']
         except:
-            print("Se acabo el mapa")
+            None
 
         return possibleMoves
 
