@@ -1,4 +1,5 @@
 import pygame as pg
+import numpy as np
 import sys
 import random
 from os import path
@@ -24,50 +25,48 @@ class Game:
         with open(path.join(game_folder, 'maze.txt'), 'rt') as f:
             for line in f:
                 self.map_data.append(line)
-        print(self.map_data)
 
     def new(self):
         # initialize all variables and do all the setup for a new game
         self.all_sprites = pg.sprite.Group()
         self.walls = pg.sprite.Group()
         self.terrain = pg.sprite.Group()
+        logicMaze = np.zeros((20,20),int)
         for row, tiles in enumerate(self.map_data):
             for col, tile in enumerate(tiles):
                 if tile == '.':
                     self.setTerrain(col,row)
                 if tile == '1':
+                    if(col < 20 and row < 20):
+                        logicMaze[row][col] = 1
                     Wall(self, col, row)
                 if tile == 'P':
-                    self.player = Player(self, col, row)
+                    Terrain(self,col,row,1)
+                    self.player = Player(self, col, row,3,3,1)
                 if tile == 'F':
                     print('Finish Line')
-        print(self.walls)
+        self.player.configure(logicMaze)
 
     def setTerrain(self,col, row):
         rand = random.randint(0,100)
         if (self.difficulty == 1):
-            if (rand <= 90):
-                return
-            elif (rand > 90 and rand <= 95):
+            if (rand <= 80):
+                Terrain(self,col,row,1)
+            elif (rand > 80 and rand <= 90):
                 Terrain(self,col,row,2)
             else:
                 Terrain(self,col,row,3)
+
+
 
         if (self.difficulty == 2):
             if (rand <= 60):
-                return
+                Terrain(self,col,row,1)
             elif (rand > 60 and rand <= 80):
                 Terrain(self,col,row,2)
             else:
                 Terrain(self,col,row,3)
 
-        if (self.difficulty == 3):
-            if (rand <= 60):
-                return
-            elif (rand > 60 and rand <= 80):
-                Wall(self,col,row,3)
-            else:
-                Wall(self,col,row,4)
 
 
     def run(self):
@@ -96,6 +95,7 @@ class Game:
     def draw(self):
         self.screen.fill(BGCOLOR)
         self.all_sprites.draw(self.screen)
+        #self.draw_grid()
         pg.display.flip()
 
     def events(self):

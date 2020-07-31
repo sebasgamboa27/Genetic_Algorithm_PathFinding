@@ -1,8 +1,10 @@
 import pygame as pg
 from settings import *
+from Motor import *
+from Camera import *
 
 class Player(pg.sprite.Sprite):
-    def __init__(self, game, x, y):
+    def __init__(self, game, x, y,motorLvl,batteryLvl,cameraLvl):
         self.groups = game.all_sprites
         pg.sprite.Sprite.__init__(self, self.groups)
         self.game = game
@@ -12,6 +14,18 @@ class Player(pg.sprite.Sprite):
         self.vx, self.vy = 0, 0
         self.x = x * TILESIZE
         self.y = y * TILESIZE
+        self.logicX = x
+        self.logicY = y
+        self.camera = None
+        self.motor = Motor(motorLvl,batteryLvl)
+        self.behavior = None
+        self.possibleMoves = []
+        self.currentTile = None
+        self.cameraLvl = cameraLvl
+
+    def configure(self,logicMaze):
+        pos = (self.logicX,self.logicY)
+        self.camera = Camera(logicMaze,pos,self.cameraLvl)
 
     def get_keys(self):
         self.vx, self.vy = 0, 0
@@ -50,11 +64,36 @@ class Player(pg.sprite.Sprite):
                 self.vy = 0
                 self.rect.y = self.y
 
+    def collide_with_terrain(self):
+        hits = pg.sprite.spritecollide(self, self.game.terrain, False)
+        if(len(hits) == 1):
+            if (self.currentTile == None):
+                self.currentTile = hits[0]
+
+            elif(self.currentTile != hits[0]):
+                self.motor.move(self.currentTile)
+                self.currentTile = hits[0]
+
+            if (self.currentTile.type > self.motor.type):
+                print("robot no apto para el terreno, apagando...")
+                self.motor.shutDown()
+
+            self.logicX = self.currentTile.x
+            self.logicY = self.currentTile.y
+            self.camera.updateLocation(self.logicX,self.logicY)
+
+
+
+
     def update(self):
-        self.get_keys()
-        self.x += self.vx * self.game.dt
-        self.y += self.vy * self.game.dt
-        self.rect.x = self.x
-        self.collide_with_walls('x')
-        self.rect.y = self.y
-        self.collide_with_walls('y')
+        if (self.motor.state):
+            self.get_keys()
+            self.x += self.vx * self.game.dt
+            self.y += self.vy * self.game.dt
+            self.rect.x = self.x
+            self.collide_with_walls('x')
+            self.rect.y = self.y
+            self.collide_with_walls('y')
+            self.collide_with_terrain()
+            self.possibleMoves = self.camera.findNxtMove()
+            print(self.possibleMoves)

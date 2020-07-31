@@ -28,12 +28,12 @@ class Terrain(pg.sprite.Sprite):
         self.rect.y = y * TILESIZE
         self.type = type
 
+        if (type == 1):
+            self.image.fill(BLACK)
         if (type == 2):
             self.image.fill(PURPLE)
         elif (type == 3):
             self.image.fill(GREEN)
-        elif (type == 4):
-            self.image.fill(BLUE)
 
 
 
