@@ -1,0 +1,36 @@
+<component name="InspectionProjectProfileManager">
+  <profile version="1.0">
+    <option name="myName" value="Project Default" />
+    <inspection_tool class="PyInterpreterInspection" enabled="false" level="WARNING" enabled_by_default="false" />
+    <inspection_tool class="PyPep8NamingInspection" enabled="true" level="WEAK WARNING" enabled_by_default="true">
+      <option name="ignoredErrors">
+        <list>
+          <option value="N806" />
+          <option value="N802" />
+        </list>
+      </option>
+    </inspection_tool>
+    <inspection_tool class="PyUnresolvedReferencesInspection" enabled="true" level="WARNING" enabled_by_default="true">
+      <option name="ignoredIdentifiers">
+        <list>
+          <option value="int.astype" />
+          <option value="Src.main.settings" />
+          <option value="Src.main.sprites" />
+          <option value="Src.sprites.settings" />
+          <option value="Src.sprites.*" />
+          <option value="Src.main.*" />
+          <option value="SmartBoxes" />
+          <option value="Src.SmartBoxes.settings" />
+          <option value="Src.SmartBoxes.DNA" />
+          <option value="Src.SmartBoxes.SW" />
+          <option value="Src.SmartBoxes.SH" />
+          <option value="Src.DNA.settings" />
+          <option value="Src.DNA.*" />
+          <option value="Src.Game.*" />
+          <option value="Src.Robot.*" />
+          <option value="Src.Motor.*" />
+        </list>
+      </option>
+    </inspection_tool>
+  </profile>
+</component>
