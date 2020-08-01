@@ -15,7 +15,7 @@ class DNA(object):
                 chainNode = [right,top,left,down]
                 self.array.append(chainNode)
 
-            motor = random.randint(1,3)
+            motor = 3#random.randint(1,3)
             battery = random.randint(1,3)
             camera = random.randint(1,3)
             levels = [motor,battery,camera]

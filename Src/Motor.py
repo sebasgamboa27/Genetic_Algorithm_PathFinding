@@ -20,6 +20,10 @@ class Motor:
         self.battery.consumeAllBattery()
         self.checkState()
 
+    def consumeBattery(self,cant):
+        self.battery.consumeBattery(cant)
+        self.checkState()
+
     def move(self,terrain):
         if (terrain.type == 1):
             self.battery.consumeBattery(1)

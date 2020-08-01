@@ -27,15 +27,21 @@ class Player(pg.sprite.Sprite):
         self.cameraLvl = self.behavior.array[4][2]
         self.nxtMove = "top"
         self.pastMove = ""
-        self.moveThread = threading.Thread(target= self.movement)
+        self.moveThread = threading.Thread(target = self.movement)
+        self.batteryThread = threading.Thread(target = self.consume)
         self.id = id
 
 
+    def consume(self):
+        self.motor.consumeBattery(0.5)
+        time.sleep(1)
+        print(self.motor.battery.batteryPercentage)
 
     def configure(self,logicMaze):
         pos = (self.logicX,self.logicY)
         self.camera = Camera(logicMaze,pos,self.cameraLvl)
         self.moveThread.start()
+        self.batteryThread.start()
 
     def get_keys(self):
         self.vx, self.vy = 0, 0
@@ -69,11 +75,16 @@ class Player(pg.sprite.Sprite):
 
 
     def movement(self):
+
         while(self.motor):
+            iteraciones = 0
             if(self.nxtMove == "top"):
                 newY = self.y - 35
                 while(self.y != newY):
                     self.advance(3)
+                    iteraciones += 1
+                    if(iteraciones>= 50000):
+                        break
                 self.pastMove = "top"
 
 
@@ -82,12 +93,19 @@ class Player(pg.sprite.Sprite):
                 while (self.y != newY):
                     self.advance(4)
 
+                    iteraciones += 1
+                    if (iteraciones >= 50000):
+                        break
+
                 self.pastMove = "down"
 
             elif (self.nxtMove == "left"):
                 newX = self.x - 35
                 while (self.x != newX):
                     self.advance(1)
+                    iteraciones += 1
+                    if (iteraciones >= 50000):
+                        break
 
                 self.pastMove = "left"
 
@@ -95,18 +113,13 @@ class Player(pg.sprite.Sprite):
                 newX = self.x + 35
                 while (self.x != newX):
                     self.advance(2)
-
+                    iteraciones += 1
+                    if (iteraciones >= 50000):
+                        break
+                        
                 self.pastMove = "right"
 
-            time.sleep(1)
-            self.motor.battery.consumeBattery(2)
             self.nxtMove = self.behavior.choosePath(self.possibleMoves,self.pastMove)[0]
-            print(self.nxtMove)
-
-
-
-
-
 
     def collide_with_walls(self, dir):
         if dir == 'x':
@@ -141,8 +154,8 @@ class Player(pg.sprite.Sprite):
                 self.currentTile = hits[0]
 
             if (self.currentTile.type > self.motor.type):
-                print("robot no apto para el terreno, apagando...")
                 self.motor.shutDown()
+                print("robot no apto para el terreno, apagando...")
 
             self.logicX = self.currentTile.x
             self.logicY = self.currentTile.y
@@ -161,7 +174,8 @@ class Player(pg.sprite.Sprite):
             self.collide_with_walls('y')
             self.collide_with_terrain()
             self.possibleMoves = self.camera.findNxtMove()
+            self.vx, self.vy = 0, 0
             print(self.possibleMoves)
             print(self.nxtMove)
-            self.vx, self.vy = 0, 0
-            print(self.motor.battery.batteryPercentage)
+
+
