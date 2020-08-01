@@ -1,0 +1,24 @@
+# define some colors (R, G, B)
+WHITE = (255, 255, 255)
+BLACK = (0, 0, 0)
+DARKGREY = (40, 40, 40)
+LIGHTGREY = (100, 100, 100)
+GREEN = (11,255,1)
+RED = (254,0,0)
+YELLOW = (255, 255, 0)
+BLUE = (70, 173, 212)
+PURPLE = (254,0,246)
+
+# game settings
+WIDTH = 700   # 16 * 64 or 32 * 32 or 64 * 16
+HEIGHT = 700  # 16 * 48 or 32 * 24 or 64 * 12
+FPS = 60
+TITLE = "Genetic Maze"
+BGCOLOR = BLACK
+
+TILESIZE = 35
+GRIDWIDTH = WIDTH / TILESIZE
+GRIDHEIGHT = HEIGHT / TILESIZE
+
+# Player settings
+PLAYER_SPEED = 1
