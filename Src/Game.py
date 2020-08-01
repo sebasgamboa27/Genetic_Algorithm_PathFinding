@@ -6,6 +6,8 @@ from os import path
 from settings import *
 from Terrain import *
 from Robot import *
+import math
+import threading
 
 
 
@@ -20,6 +22,13 @@ class Game:
         self.difficulty = difficulty
         self.generation = []
         self.genSize = genSize
+        self.deadCars = 0
+        self.finish = pg.math.Vector2()
+        self.finish.xy = 699, 1
+        self.genePool = []
+        self.genNum =1
+        self.finished = False
+        self.logicMaze = np.zeros((20, 20), int)
 
     def load_data(self):
         game_folder = path.dirname(__file__)
@@ -71,6 +80,92 @@ class Game:
             else:
                 Terrain(self,col,row,3)
 
+    def Remap(self,low1, high1, low2, high2, value):
+        return low2 + (value - low1) * (high2 - low2) / (high1 - low1)
+
+    def Distance(self,x1, x2, y1, y2):
+        dis = math.sqrt(math.pow(x1 - x2, 2) + math.pow(y1 - y2, 2))
+        return (1000 - dis) / 1000
+
+    def setupMap(self):
+        for row, tiles in enumerate(self.map_data):
+            for col, tile in enumerate(tiles):
+                if tile == '.':
+                    self.setTerrain(col,row)
+                    #print('same terrain')
+                if tile == '1':
+                    if(col < 20 and row < 20):
+                        self.logicMaze[row][col] = 1
+                    Wall(self, col, row)
+                if tile == 'P':
+                    Terrain(self,col,row,1)
+                if tile == 'F':
+                    print('Finish Line')
+        for i in range(self.genSize):
+            self.generation[i].configure(self.logicMaze)
+
+    def FinishGeneration(self):
+
+            tempAvgFitness = 0
+            tempSuccessCount = 0
+            self.genePool.clear()
+            maxFit = 0
+            lowestIndex = 0
+            successCount = 0
+            avgFitnessSum = 0
+            maxFitIndex = 0
+
+            for box in self.generation:
+                box.CalculateFitness()
+                avgFitnessSum += box.fitness
+                if box.fitness >= 1.0:
+                    successCount += 1
+                if box.fitness > maxFit:
+                    maxFit = box.fitness
+                    maxFitIndex = self.generation.index(box)
+            successCountD = successCount - tempSuccessCount
+            avgFitness = avgFitnessSum / len(self.generation)
+            avgFitnessD = avgFitness - tempAvgFitness
+
+            for i, box in enumerate(self.generation):
+                if box.won:
+                    if box.wonTime < lowestTime:
+                        lowestIndex = i
+
+            for i, box in enumerate(self.generation):
+
+                n = int((box.fitness ** 2) * 100)
+
+                if i == maxFitIndex:
+                    print(box.fitness)
+                    if successCount < 2:
+                        n = int((box.fitness ** 2) * 150)
+
+                if i == lowestIndex and successCount > 1:
+                    n = int((box.fitness ** 2) * 500)
+                for j in range(n):
+                    self.genePool.append(self.generation[i])
+
+            if successCount >= 100:
+                levelCount += 1
+                self.generation.clear()
+                self.genSize = 0
+
+            else:
+                for i, box in enumerate(self.generation):
+
+                    randomIndex = random.randint(0, len(self.genePool) - 1)
+                    parentA = self.genePool[randomIndex].behavior
+                    randomIndex = random.randint(0, len(self.genePool) - 1)
+                    parentB = self.genePool[randomIndex].behavior
+                    child = parentA.crossOver(parentB)
+                    self.generation[i] = Player(self,1,19,i,child.array)
+                    self.generation[i].configure(self.logicMaze)
+
+                #self.setupMap()
+                self.genNum += 1
+                '''mae, aqui ya queda hecha la nueva generacion, en self.generation
+                pero no se como hacer para que corran otra vez con los valores iniciales'''
 
 
     def run(self):
@@ -81,6 +176,18 @@ class Game:
             self.events()
             self.update()
             self.draw()
+            #print(self.deadCars)
+            self.deadCars = 0
+            for robot in self.generation:
+                if not robot.motor.state:
+                    self.deadCars+=1
+
+            if self.deadCars >= self.genSize-1:
+                print('todos murieron')
+                self.FinishGeneration()
+
+
+
 
     def quit(self):
         pg.quit()

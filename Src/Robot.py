@@ -7,7 +7,7 @@ from Camera import *
 from DNA import *
 
 class Player(pg.sprite.Sprite):
-    def __init__(self, game, x, y,id):
+    def __init__(self, game, x, y,id,genes=None):
         self.groups = game.all_sprites
         pg.sprite.Sprite.__init__(self, self.groups)
         self.game = game
@@ -19,7 +19,10 @@ class Player(pg.sprite.Sprite):
         self.y = y * TILESIZE
         self.logicX = x
         self.logicY = y
-        self.behavior = DNA()
+        if(genes==None):
+            self.behavior = DNA()
+        else:
+            self.behavior = DNA(genes)
         self.camera = None
         self.motor = Motor(self,self.behavior.array[4][0],self.behavior.array[4][1])
         self.possibleMoves = []
@@ -30,6 +33,16 @@ class Player(pg.sprite.Sprite):
         self.moveThread = threading.Thread(target = self.movement)
         self.batteryThread = threading.Thread(target = self.consume)
         self.id = id
+        self.fitness = 0
+        self.won = False
+
+
+    def CalculateFitness(self):     # The closer it is, the better it's fitness is.
+        '''dist = self.game.Distance(self.x, self.game.finish.x, self.y, self.game.finish.y)
+        self.fitness = self.game.Remap(0, WIDTH, 1, 0, dist)
+        if(self.fitness<0):
+            self.fitness = -self.fitness'''
+        self.fitness = self.game.Distance(self.x, self.game.finish.x, self.y, self.game.finish.y)
 
 
     def consume(self):
@@ -40,6 +53,8 @@ class Player(pg.sprite.Sprite):
     def configure(self,logicMaze):
         pos = (self.logicX,self.logicY)
         self.camera = Camera(logicMaze,pos,self.cameraLvl)
+        #self.moveThread = threading.Thread(target=self.movement)
+        #self.batteryThread = threading.Thread(target=self.consume)
         self.moveThread.start()
         self.batteryThread.start()
 
@@ -77,13 +92,22 @@ class Player(pg.sprite.Sprite):
     def movement(self):
 
         while(self.motor):
+
+            if not self.motor.state:
+                break
+
+            if(self.logicX >= 19 and self.logicY <= 1):
+                self.won = true
+                self.motor.shutDown()
+                print('ganeeeee')
+
             iteraciones = 0
             if(self.nxtMove == "top"):
                 newY = self.y - 35
                 while(self.y != newY):
                     self.advance(3)
                     iteraciones += 1
-                    if(iteraciones>= 50000):
+                    if(iteraciones>= 500):
                         break
                 self.pastMove = "top"
 
@@ -94,7 +118,7 @@ class Player(pg.sprite.Sprite):
                     self.advance(4)
 
                     iteraciones += 1
-                    if (iteraciones >= 50000):
+                    if (iteraciones >= 500):
                         break
 
                 self.pastMove = "down"
@@ -104,7 +128,7 @@ class Player(pg.sprite.Sprite):
                 while (self.x != newX):
                     self.advance(1)
                     iteraciones += 1
-                    if (iteraciones >= 50000):
+                    if (iteraciones >= 500):
                         break
 
                 self.pastMove = "left"
@@ -114,7 +138,7 @@ class Player(pg.sprite.Sprite):
                 while (self.x != newX):
                     self.advance(2)
                     iteraciones += 1
-                    if (iteraciones >= 50000):
+                    if (iteraciones >= 500):
                         break
                         
                 self.pastMove = "right"
@@ -175,7 +199,5 @@ class Player(pg.sprite.Sprite):
             self.collide_with_terrain()
             self.possibleMoves = self.camera.findNxtMove()
             self.vx, self.vy = 0, 0
-            print(self.possibleMoves)
-            print(self.nxtMove)
 
 
