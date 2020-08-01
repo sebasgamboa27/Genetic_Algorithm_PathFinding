@@ -7,6 +7,7 @@ from settings import *
 from Terrain import *
 from Robot import *
 import math
+import time
 import threading
 
 
@@ -159,10 +160,14 @@ class Game:
                     randomIndex = random.randint(0, len(self.genePool) - 1)
                     parentB = self.genePool[randomIndex].behavior
                     child = parentA.crossOver(parentB)
+                    self.generation[i].x = 1000
+                    self.generation[i].y = 1000
                     self.generation[i] = Player(self,1,19,i,child.array)
-                    self.generation[i].configure(self.logicMaze)
 
                 #self.setupMap()
+                time.sleep(5)
+                for i in range(self.genSize):
+                    self.generation[i].configure(self.logicMaze)
                 self.genNum += 1
                 '''mae, aqui ya queda hecha la nueva generacion, en self.generation
                 pero no se como hacer para que corran otra vez con los valores iniciales'''
@@ -184,7 +189,8 @@ class Game:
 
             if self.deadCars >= self.genSize:
                 print('todos murieron')
-                #self.FinishGeneration()
+                self.FinishGeneration()
+
 
 
 
