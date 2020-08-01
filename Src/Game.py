@@ -182,9 +182,9 @@ class Game:
                 if not robot.motor.state:
                     self.deadCars+=1
 
-            if self.deadCars >= self.genSize-1:
+            if self.deadCars >= self.genSize:
                 print('todos murieron')
-                self.FinishGeneration()
+                #self.FinishGeneration()
 
 
 

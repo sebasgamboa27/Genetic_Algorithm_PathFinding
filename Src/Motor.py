@@ -11,8 +11,11 @@ class Motor:
         if(self.battery.battery <= 0):
             self.state = False
             print('Motor apagado')
+            self.robot.x = 1000
+            self.robot.y = 1000
+
         else:
-            print("Batería del robot: ",self.robot.id,self.battery.batteryPercentage,"%")
+            print("Batería del robot: ",self.robot.id,self.battery.battery,"%")
 
         return self.state
 

@@ -46,9 +46,10 @@ class Player(pg.sprite.Sprite):
 
 
     def consume(self):
-        self.motor.consumeBattery(0.5)
-        time.sleep(1)
-        print(self.motor.battery.batteryPercentage)
+        while self.motor.state:
+            self.motor.consumeBattery(5)
+            time.sleep(1)
+            print(self.motor.battery.batteryPercentage)
 
     def configure(self,logicMaze):
         pos = (self.logicX,self.logicY)
@@ -91,10 +92,11 @@ class Player(pg.sprite.Sprite):
 
     def movement(self):
 
-        while(self.motor):
+        while(self.motor.state):
+            print(self.id,'estoy vivo')
 
-            if not self.motor.state:
-                break
+            #if not self.motor.state:
+              #  break
 
             if(self.logicX >= 19 and self.logicY <= 1):
                 self.won = true
@@ -145,6 +147,7 @@ class Player(pg.sprite.Sprite):
 
             self.nxtMove = self.behavior.choosePath(self.possibleMoves,self.pastMove)[0]
 
+
     def collide_with_walls(self, dir):
         if dir == 'x':
             hits = pg.sprite.spritecollide(self, self.game.walls, False)
@@ -189,15 +192,14 @@ class Player(pg.sprite.Sprite):
 
 
     def update(self):
-        if (self.motor.state):
-            self.x += self.vx
-            self.y += self.vy
-            self.rect.x = self.x
-            self.collide_with_walls('x')
-            self.rect.y = self.y
-            self.collide_with_walls('y')
-            self.collide_with_terrain()
-            self.possibleMoves = self.camera.findNxtMove()
-            self.vx, self.vy = 0, 0
+        self.x += self.vx
+        self.y += self.vy
+        self.rect.x = self.x
+        self.collide_with_walls('x')
+        self.rect.y = self.y
+        self.collide_with_walls('y')
+        self.collide_with_terrain()
+        self.possibleMoves = self.camera.findNxtMove()
+        self.vx, self.vy = 0, 0
 
 
