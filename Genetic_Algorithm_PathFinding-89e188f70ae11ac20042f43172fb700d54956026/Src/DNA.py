@@ -1,4 +1,5 @@
 import random
+import math
 
 class DNA(object):
     def __init__(self, genes=None):
@@ -40,7 +41,11 @@ class DNA(object):
         choices = ["right","top","left","down"]
         choiceMade = None
 
+        iterations = 0
         while choiceMade is None:
+
+            if iterations >= 500:
+                choiceMade = available[0]
 
             if currentState == "right":
                 direction = random.choices(choices,

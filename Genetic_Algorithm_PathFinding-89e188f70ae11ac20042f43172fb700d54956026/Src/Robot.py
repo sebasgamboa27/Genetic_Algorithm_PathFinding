@@ -7,7 +7,7 @@ from Camera import *
 from DNA import *
 
 class Player(pg.sprite.Sprite):
-    def __init__(self, game, x, y,id):
+    def __init__(self, game, x, y,id,genes=None):
         self.groups = game.all_sprites
         pg.sprite.Sprite.__init__(self, self.groups)
         self.game = game
@@ -19,7 +19,10 @@ class Player(pg.sprite.Sprite):
         self.y = y * TILESIZE
         self.logicX = x
         self.logicY = y
-        self.behavior = DNA()
+        if (genes == None):
+            self.behavior = DNA()
+        else:
+            self.behavior = DNA(genes)
         self.camera = None
         self.motor = Motor(self,self.behavior.array[4][0],self.behavior.array[4][1])
         self.possibleMoves = []
@@ -30,7 +33,15 @@ class Player(pg.sprite.Sprite):
         self.moveThread = threading.Thread(target = self.movement)
         self.batteryThread = threading.Thread(target = self.consume)
         self.id = id
+        self.fitness = 0
+        self.won = False
 
+    def CalculateFitness(self):  # The closer it is, the better it's fitness is.
+        '''dist = self.game.Distance(self.x, self.game.finish.x, self.y, self.game.finish.y)
+        self.fitness = self.game.Remap(0, WIDTH, 1, 0, dist)
+        if(self.fitness<0):
+            self.fitness = -self.fitness'''
+        self.fitness = self.game.Distance(self.logicX, self.game.finish.x, self.logicY, self.game.finish.y)
 
     def consume(self):
         while(self.motor.state):
@@ -46,6 +57,11 @@ class Player(pg.sprite.Sprite):
 
     def movement(self):
         while(self.motor.state):
+            if self.logicX >= 18 and self.logicY <=1:
+                self.won = True
+                print('GANEEEEEEEEE')
+                self.motor.state = False
+
             if(self.nxtMove == "top"):
                 self.y -= 35
                 self.pastMove = "top"

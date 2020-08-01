@@ -7,6 +7,7 @@ from os import path
 from settings import *
 from Terrain import *
 from Robot import *
+import math
 
 
 
@@ -23,6 +24,17 @@ class Game:
         self.oldGen = []
         self.deadGen = False
         self.genSize = genSize
+        self.finish = pg.math.Vector2()
+        self.finish.xy = 18,1
+        self.genePool = []
+        self.genNum = 1
+        self.finished = False
+        self.logicMaze = np.zeros((20, 20), int)
+        self.lowestTime = 0
+
+    def Distance(self, x1, x2, y1, y2):
+        dis = math.sqrt(math.pow(x1 - x2, 2) + math.pow(y1 - y2, 2))
+        return (30 - dis) / 30
 
     def load_data(self):
         game_folder = path.dirname(__file__)
@@ -99,8 +111,11 @@ class Game:
                 self.clearOldGenOnScreen()
                 print("GENARACION CREADA")
                 #AQUI VA SU FUNCION DE INSERTAR LA NUEVA GEN EN self.generation
-                self.createGen()
+                self.FinishGeneration()
+                #self.createGen()
                 self.clearOldGen()
+                print('Generacion: ',self.genNum)
+
 
             self.events()
             self.update()
@@ -120,6 +135,66 @@ class Game:
 
     def clearOldGen(self):
         self.oldGen.clear()
+
+    def FinishGeneration(self):
+
+        tempAvgFitness = 0
+        tempSuccessCount = 0
+        self.genePool.clear()
+        maxFit = 0
+        lowestIndex = 0
+        successCount = 0
+        avgFitnessSum = 0
+        maxFitIndex = 0
+
+        for box in self.oldGen:
+            box.CalculateFitness()
+            avgFitnessSum += box.fitness
+            if box.fitness >= 1.0 or box.won:
+                successCount += 1
+            if box.fitness > maxFit:
+                maxFit = box.fitness
+                maxFitIndex = self.oldGen.index(box)
+        successCountD = successCount - tempSuccessCount
+        avgFitness = avgFitnessSum / len(self.oldGen)
+        avgFitnessD = avgFitness - tempAvgFitness
+
+        for i, box in enumerate(self.oldGen):
+            if box.won:
+                if box.motor.battery.battery > self.lowestTime:
+                    lowestIndex = i
+                    self.lowestTime = box.motor.battery.battery
+
+        for i, box in enumerate(self.oldGen):
+
+            n = int((box.fitness ** 2) * 100)
+
+            if i == maxFitIndex:
+                print(box.fitness)
+                if successCount < 2:
+                    n = int((box.fitness ** 2) * 150)
+
+            if i == lowestIndex and successCount > 1:
+                n = int((box.fitness ** 2) * 500)
+            for j in range(n):
+                self.genePool.append(self.oldGen[i])
+
+        if successCount >= 100:
+            print('ganaron todos')
+
+        else:
+            for i, box in enumerate(self.oldGen):
+                randomIndex = random.randint(0, len(self.genePool) - 1)
+                parentA = self.genePool[randomIndex].behavior
+                randomIndex = random.randint(0, len(self.genePool) - 1)
+                parentB = self.genePool[randomIndex].behavior
+                child = parentA.crossOver(parentB)
+                self.generation.append(Player(self, 1, 19, i, child.array))
+
+            for i in range(self.genSize):
+                self.generation[i].configure(self.logicMaze)
+            self.genNum += 1
+
 
     def quit(self):
         pg.quit()

@@ -3,11 +3,11 @@ class Battery:
         self.batteryCapacity = 0
         self.batteryLvl = batteryLvl
         if(batteryLvl == 1):
-            self.batteryCapacity = 100
+            self.batteryCapacity = 150
         if (batteryLvl == 2):
-            self.batteryCapacity = 200
+            self.batteryCapacity = 250
         if (batteryLvl == 3):
-            self.batteryCapacity = 300
+            self.batteryCapacity = 350
         self.battery = self.batteryCapacity
         self.batteryPercentage = (self.battery/self.batteryCapacity)*100
 
