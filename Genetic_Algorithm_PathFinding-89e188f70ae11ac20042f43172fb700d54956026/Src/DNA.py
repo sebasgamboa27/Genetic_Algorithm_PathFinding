@@ -16,7 +16,7 @@ class DNA(object):
                 chainNode = [right,top,left,down]
                 self.array.append(chainNode)
 
-            motor = random.randint(1,3)
+            motor = 3#random.randint(1,3)
             battery = random.randint(1,3)
             camera = random.randint(1,3)
             levels = [motor,battery,camera]
@@ -44,7 +44,7 @@ class DNA(object):
         iterations = 0
         while choiceMade is None:
 
-            if iterations == 500:
+            if iterations >= 500:
                 choiceMade = available[0]
 
             if currentState == "right":

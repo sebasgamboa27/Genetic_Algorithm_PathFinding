@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="314de3ea-fcda-4033-afa5-56fc7b699ee2" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Genetic_Algorithm_PathFinding-89e188f70ae11ac20042f43172fb700d54956026/Src/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/Genetic_Algorithm_PathFinding-89e188f70ae11ac20042f43172fb700d54956026/Src/main.py" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1evCNNu90pD701veU4IVL60X1zk" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/Src" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Python.main">
+    <configuration name="Main" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
+      <module name="Genetic_Algorithm_PathFinding" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="$PROJECT_DIR$/venv/bin/python" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="false" />
+      <option name="ADD_SOURCE_ROOTS" value="false" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Main.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="true" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="main" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
+      <module name="Genetic_Algorithm_PathFinding" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="$PROJECT_DIR$/venv/bin/python" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Genetic_Algorithm_PathFinding-89e188f70ae11ac20042f43172fb700d54956026/Src" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="false" />
+      <option name="ADD_SOURCE_ROOTS" value="false" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Genetic_Algorithm_PathFinding-89e188f70ae11ac20042f43172fb700d54956026/Src/main.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="true" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="Python.Main" />
+      <item itemvalue="Python.main" />
+    </list>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="314de3ea-fcda-4033-afa5-56fc7b699ee2" name="Default Changelist" comment="" />
+      <created>1595192638277</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1595192638277</updated>
+      <workItem from="1595192660323" duration="477000" />
+      <workItem from="1595990568177" duration="4494000" />
+      <workItem from="1596043099313" duration="530000" />
+      <workItem from="1596070740311" duration="305000" />
+      <workItem from="1596071076884" duration="2019000" />
+      <workItem from="1596073340070" duration="701000" />
+      <workItem from="1596076647034" duration="84000" />
+      <workItem from="1596234729075" duration="3757000" />
+      <workItem from="1596242206831" duration="14178000" />
+      <workItem from="1596257732506" duration="4382000" />
+      <workItem from="1596307175105" duration="94000" />
+      <workItem from="1596307842142" duration="8732000" />
+      <workItem from="1596592824524" duration="1640000" />
+      <workItem from="1596912822475" duration="168000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="2" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="184" y="123" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1596307891004">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state x="184" y="123" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.23.1440.877@0.23.1440.877" timestamp="1596307891004" />
+    <state x="458" y="215" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1595993335337">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state x="458" y="215" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.23.1440.877@0.23.1440.877" timestamp="1595993335337" />
+    <state width="843" height="466" key="DebuggerActiveHint" timestamp="1596261993204">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state width="843" height="466" key="DebuggerActiveHint/0.23.1440.877@0.23.1440.877" timestamp="1596261993204" />
+    <state width="1398" height="231" key="GridCell.Tab.0.bottom" timestamp="1596912990310">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state width="1398" height="231" key="GridCell.Tab.0.bottom/0.23.1440.877@0.0.1440.900" timestamp="1596593155597" />
+    <state width="1398" height="231" key="GridCell.Tab.0.bottom/0.23.1440.877@0.23.1440.877" timestamp="1596912990310" />
+    <state width="1398" height="231" key="GridCell.Tab.0.center" timestamp="1596912990309">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state width="1398" height="231" key="GridCell.Tab.0.center/0.23.1440.877@0.0.1440.900" timestamp="1596593155596" />
+    <state width="1398" height="231" key="GridCell.Tab.0.center/0.23.1440.877@0.23.1440.877" timestamp="1596912990309" />
+    <state width="1398" height="231" key="GridCell.Tab.0.left" timestamp="1596912990309">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state width="1398" height="231" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1596593155591" />
+    <state width="1398" height="242" key="GridCell.Tab.0.left/0.23.1440.877@0.0.1440.900" timestamp="1596258152736" />
+    <state width="1398" height="231" key="GridCell.Tab.0.left/0.23.1440.877@0.23.1440.877" timestamp="1596912990309" />
+    <state width="1398" height="231" key="GridCell.Tab.0.right" timestamp="1596912990309">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state width="1398" height="286" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1596247229380" />
+    <state width="1398" height="231" key="GridCell.Tab.0.right/0.23.1440.877@0.0.1440.900" timestamp="1596593155597" />
+    <state width="1398" height="231" key="GridCell.Tab.0.right/0.23.1440.877@0.23.1440.877" timestamp="1596912990309" />
+    <state width="1398" height="242" key="GridCell.Tab.1.bottom" timestamp="1596317345912">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state width="1398" height="242" key="GridCell.Tab.1.bottom/0.23.1440.877@0.0.1440.900" timestamp="1596309354913" />
+    <state width="1398" height="242" key="GridCell.Tab.1.bottom/0.23.1440.877@0.23.1440.877" timestamp="1596317345912" />
+    <state width="1398" height="242" key="GridCell.Tab.1.center" timestamp="1596317345912">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state width="1398" height="242" key="GridCell.Tab.1.center/0.23.1440.877@0.0.1440.900" timestamp="1596309354912" />
+    <state width="1398" height="242" key="GridCell.Tab.1.center/0.23.1440.877@0.23.1440.877" timestamp="1596317345912" />
+    <state width="1398" height="242" key="GridCell.Tab.1.left" timestamp="1596317345911">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state width="1398" height="242" key="GridCell.Tab.1.left/0.23.1440.877@0.0.1440.900" timestamp="1596309354912" />
+    <state width="1398" height="242" key="GridCell.Tab.1.left/0.23.1440.877@0.23.1440.877" timestamp="1596317345911" />
+    <state width="1398" height="242" key="GridCell.Tab.1.right" timestamp="1596317345912">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state width="1398" height="242" key="GridCell.Tab.1.right/0.23.1440.877@0.0.1440.900" timestamp="1596309354913" />
+    <state width="1398" height="242" key="GridCell.Tab.1.right/0.23.1440.877@0.23.1440.877" timestamp="1596317345912" />
+    <state x="189" y="71" key="SettingsEditor" timestamp="1596247756753">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state x="189" y="71" key="SettingsEditor/0.23.1440.877@0.23.1440.877" timestamp="1596247756753" />
+    <state x="0" y="181" key="git4idea.branch.GitSmartOperationDialog" timestamp="1596308105647">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state x="0" y="181" key="git4idea.branch.GitSmartOperationDialog/0.23.1440.877@0.23.1440.877" timestamp="1596308105647" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <default-breakpoints>
+        <breakpoint type="python-exception">
+          <properties notifyOnTerminate="true" exception="BaseException">
+            <option name="notifyOnTerminate" value="true" />
+          </properties>
+        </breakpoint>
+      </default-breakpoints>
+    </breakpoint-manager>
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/Genetic_Algorithm_PathFinding$main.coverage" NAME="main Coverage Results" MODIFIED="1596912826249" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Genetic_Algorithm_PathFinding-89e188f70ae11ac20042f43172fb700d54956026/Src" />
+  </component>
+</project>
