@@ -35,6 +35,7 @@ class Player(pg.sprite.Sprite):
         self.id = id
         self.fitness = 0
         self.won = False
+        self.Parents = [['None'],['None']]
 
     def CalculateFitness(self):  # The closer it is, the better it's fitness is.
         '''dist = self.game.Distance(self.x, self.game.finish.x, self.y, self.game.finish.y)

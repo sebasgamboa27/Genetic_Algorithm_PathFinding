@@ -32,8 +32,11 @@ class Game:
         self.logicMaze = np.zeros((20, 20), int)
         self.lowestTime = 0
         self.victories = 0
+        self.best = None
+        self.bestIndex = 0
         self.alive = genSize
         self.frames = 0
+        self.avFitness = 0
         pg.font.init()
         self.font = pg.font.Font('MinecraftItalic-R8Mo.otf', 30)
 
@@ -65,7 +68,10 @@ class Game:
                 if tile == 'P':
                     Terrain(self,col,row,1)
                     for i in range(self.genSize):
-                        self.generation.append(Player(self, col, row,i))
+                        newPlayer = Player(self, col, row,i)
+                        self.generation.append(newPlayer)
+                        if i == 1:
+                            self.best = newPlayer
                 if tile == 'F':
                     print('Finish Line')
         for i in range(self.genSize):
@@ -167,9 +173,12 @@ class Game:
         successCountD = successCount - tempSuccessCount
         avgFitness = avgFitnessSum / len(self.oldGen)
         avgFitnessD = avgFitness - tempAvgFitness
+        self.avFitness = avgFitnessD
+
 
         for i, box in enumerate(self.oldGen):
             if box.won:
+                self.victories+=1
                 if box.motor.battery.battery > self.lowestTime:
                     lowestIndex = i
                     self.lowestTime = box.motor.battery.battery
@@ -180,6 +189,8 @@ class Game:
 
             if i == maxFitIndex:
                 print(box.fitness)
+                self.bestIndex = maxFitIndex
+                self.best = self.oldGen[maxFitIndex]
                 if successCount < 2:
                     n = int((box.fitness ** 2) * 150)
 
@@ -195,10 +206,15 @@ class Game:
             for i, box in enumerate(self.oldGen):
                 randomIndex = random.randint(0, len(self.genePool) - 1)
                 parentA = self.genePool[randomIndex].behavior
+                parentACOMPLETE = self.genePool[randomIndex]
                 randomIndex = random.randint(0, len(self.genePool) - 1)
                 parentB = self.genePool[randomIndex].behavior
+                parentBCOMPLETE = self.genePool[randomIndex]
                 child = parentA.crossOver(parentB)
-                self.generation.append(Player(self, 1, 19, i, child.array))
+                player = Player(self, 1, 19, i, child.array)
+                player.Parents[0] = parentACOMPLETE
+                player.Parents[1] = parentBCOMPLETE
+                self.generation.append(player)
 
             for i in range(self.genSize):
                 self.generation[i].configure(self.logicMaze)
@@ -227,10 +243,47 @@ class Game:
         self.screen.blit(GENERACIONIMAGE, (720, 100))
         self.screen.blit(ROBOTSIMAGE, (720, 150))
         self.screen.blit(FINISHEDIMAGE, (720, 200))
+        self.screen.blit(AVERAGE, (720, 250))
+        self.screen.blit(LOWEST, (720, 300))
+        self.screen.blit(BEST, (720, 350))
 
         self.screen.blit(self.font.render(str(self.genNum), False, (254, 0, 0)),(960,95))
         self.screen.blit(self.font.render(str(self.alive), False, (254, 0, 0)), (860, 145))
         self.screen.blit(self.font.render(str(self.victories), False, (254, 0, 0)), (900, 195))
+        self.screen.blit(self.font.render(str(round(self.avFitness,3)), False, (254, 0, 0)), (1000, 245))
+        self.screen.blit(self.font.render(str(self.lowestTime)+'%', False, (254, 0, 0)), (960, 295))
+        if self.best is not None:
+            delimiter = ''
+            delimiter2 = ''
+            if self.genNum > 2:
+                final_strA = 'A: ' + 'right('+ str(self.best.Parents[0].behavior.array[0]).strip('[]')+') '+\
+                             'top('+str(self.best.Parents[0].behavior.array[1]).strip('[]')+')'
+
+                final_strA2 = 'left('+str(self.best.Parents[0].behavior.array[2]).strip('[]')+') '+\
+                             'down('+str(self.best.Parents[0].behavior.array[3]).strip('[]')+')'
+
+
+                final_strB = 'B: ' + 'right('+ str(self.best.Parents[1].behavior.array[0]).strip('[]')+') '+\
+                             'top('+str(self.best.Parents[1].behavior.array[1]).strip('[]')+')'
+
+                final_strB2 = 'left(' + str(self.best.Parents[1].behavior.array[2]).strip('[]') + ') ' +\
+                              'down(' + str(self.best.Parents[1].behavior.array[3]).strip('[]')+')'
+            else:
+                final_strA = 'None'
+                final_strB = 'None'
+                final_strA2 = 'None'
+                final_strB2 = 'None'
+
+            finalstrC = 'Motor: ' + str(self.best.motor.type)
+            finalstrD = 'Bateria: ' + str(self.best.motor.battery.batteryLvl)
+            finalstrE = 'Camara: ' + str(self.best.cameraLvl)
+            self.screen.blit(self.font.render(str(finalstrC), False, (254, 0, 0)), (720, 595))
+            self.screen.blit(self.font.render(str(finalstrD), False, (254, 0, 0)), (720, 645))
+            self.screen.blit(self.font.render(str(finalstrE), False, (254, 0, 0)), (720, 695))
+            self.screen.blit(self.font.render(str(final_strA), False, (254, 0, 0)), (720, 395))
+            self.screen.blit(self.font.render(str(final_strA2), False, (254, 0, 0)), (720, 445))
+            self.screen.blit(self.font.render(str(final_strB), False, (254, 0, 0)), (720, 495))
+            self.screen.blit(self.font.render(str(final_strB2), False, (254, 0, 0)), (720, 545))
 
         pg.display.flip()
 
