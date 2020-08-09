@@ -61,6 +61,7 @@ class Player(pg.sprite.Sprite):
                 self.won = True
                 print('GANEEEEEEEEE')
                 self.motor.state = False
+                self.game.victories += 1
 
             if(self.nxtMove == "top"):
                 self.y -= 35
@@ -79,7 +80,8 @@ class Player(pg.sprite.Sprite):
                 self.pastMove = "right"
             time.sleep(1)
             self.nxtMove = self.behavior.choosePath(self.possibleMoves,self.pastMove)[0]
-            #print("Movimientos robot ",self.id,self.possibleMoves,self.nxtMove)
+
+        self.game.alive -= 1
 
 
 

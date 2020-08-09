@@ -31,6 +31,11 @@ class Game:
         self.finished = False
         self.logicMaze = np.zeros((20, 20), int)
         self.lowestTime = 0
+        self.victories = 0
+        self.alive = genSize
+        self.frames = 0
+        pg.font.init()
+        self.font = pg.font.Font('MinecraftItalic-R8Mo.otf', 30)
 
     def Distance(self, x1, x2, y1, y2):
         dis = math.sqrt(math.pow(x1 - x2, 2) + math.pow(y1 - y2, 2))
@@ -114,6 +119,8 @@ class Game:
                 self.FinishGeneration()
                 #self.createGen()
                 self.clearOldGen()
+                self.alive = self.genSize
+                self.victories = 0
                 print('Generacion: ',self.genNum)
 
 
@@ -134,6 +141,8 @@ class Game:
             robot.x = robot.y = 1000
 
     def clearOldGen(self):
+        for bot in self.oldGen:
+            bot.kill()
         self.oldGen.clear()
 
     def FinishGeneration(self):
@@ -204,6 +213,7 @@ class Game:
         # update portion of the game loop
         self.all_sprites.update()
 
+
     def draw_grid(self):
         for x in range(0, WIDTH, TILESIZE):
             pg.draw.line(self.screen, LIGHTGREY, (x, 0), (x, HEIGHT))
@@ -213,6 +223,15 @@ class Game:
     def draw(self):
         self.screen.fill(BGCOLOR)
         self.all_sprites.draw(self.screen)
+        self.screen.blit(TITLEIMAGE, (750, 20))
+        self.screen.blit(GENERACIONIMAGE, (720, 100))
+        self.screen.blit(ROBOTSIMAGE, (720, 150))
+        self.screen.blit(FINISHEDIMAGE, (720, 200))
+
+        self.screen.blit(self.font.render(str(self.genNum), False, (254, 0, 0)),(960,95))
+        self.screen.blit(self.font.render(str(self.alive), False, (254, 0, 0)), (860, 145))
+        self.screen.blit(self.font.render(str(self.victories), False, (254, 0, 0)), (900, 195))
+
         pg.display.flip()
 
     def events(self):

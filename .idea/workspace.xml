@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="314de3ea-fcda-4033-afa5-56fc7b699ee2" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Genetic_Algorithm_PathFinding-89e188f70ae11ac20042f43172fb700d54956026/Src/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/Genetic_Algorithm_PathFinding-89e188f70ae11ac20042f43172fb700d54956026/Src/main.py" afterDir="false" />
-    </list>
+    <list default="true" id="314de3ea-fcda-4033-afa5-56fc7b699ee2" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -20,6 +17,7 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="JupyterTrust" id="e9b675ea-6c1a-470e-9560-02be4a59bf6c" />
   <component name="ProjectId" id="1evCNNu90pD701veU4IVL60X1zk" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -35,6 +33,12 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
@@ -43,56 +47,62 @@
       <recent name="$PROJECT_DIR$/Src" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.main">
-    <configuration name="Main" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
+  <component name="RunManager" selected="Python.main (1)">
+    <configuration name="main (1)" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="Genetic_Algorithm_PathFinding" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
-      <option name="SDK_HOME" value="$PROJECT_DIR$/venv/bin/python" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="false" />
-      <option name="ADD_SOURCE_ROOTS" value="false" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Genetic_Algorithm_PathFinding/Src" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Main.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Genetic_Algorithm_PathFinding/Src/main.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="true" />
+      <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
       <option name="REDIRECT_INPUT" value="false" />
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="main" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
+    <configuration name="main" type="PythonConfigurationType" factoryName="Python">
       <module name="Genetic_Algorithm_PathFinding" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
-      <option name="SDK_HOME" value="$PROJECT_DIR$/venv/bin/python" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Genetic_Algorithm_PathFinding-89e188f70ae11ac20042f43172fb700d54956026/Src" />
+      <option name="SDK_HOME" value="C:\Users\nacho\AppData\Local\Programs\Python\Python38-32\python.exe" />
+      <option name="WORKING_DIRECTORY" value="" />
       <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="false" />
-      <option name="ADD_SOURCE_ROOTS" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Genetic_Algorithm_PathFinding-89e188f70ae11ac20042f43172fb700d54956026/Src/main.py" />
+      <option name="SCRIPT_NAME" value="" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="true" />
+      <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
       <option name="REDIRECT_INPUT" value="false" />
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Python.Main" />
       <item itemvalue="Python.main" />
+      <item itemvalue="Python.main (1)" />
     </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.main (1)" />
+      </list>
+    </recent_temporary>
   </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -117,19 +127,21 @@
       <workItem from="1596307842142" duration="8732000" />
       <workItem from="1596592824524" duration="1640000" />
       <workItem from="1596912822475" duration="168000" />
+      <workItem from="1596914670460" duration="12538000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="2" />
+    <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="184" y="123" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1596307891004">
-      <screen x="0" y="23" width="1440" height="877" />
+    <state x="196" y="94" width="1089" height="714" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1596915013917">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
+    <state x="196" y="94" width="1089" height="714" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.824@0.0.1536.824" timestamp="1596915013917" />
     <state x="184" y="123" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.23.1440.877@0.23.1440.877" timestamp="1596307891004" />
     <state x="458" y="215" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1595993335337">
       <screen x="0" y="23" width="1440" height="877" />
@@ -139,26 +151,30 @@
       <screen x="0" y="23" width="1440" height="877" />
     </state>
     <state width="843" height="466" key="DebuggerActiveHint/0.23.1440.877@0.23.1440.877" timestamp="1596261993204" />
-    <state width="1398" height="231" key="GridCell.Tab.0.bottom" timestamp="1596912990310">
-      <screen x="0" y="23" width="1440" height="877" />
+    <state width="1493" height="151" key="GridCell.Tab.0.bottom" timestamp="1596931951296">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
+    <state width="1493" height="151" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1596931951296" />
     <state width="1398" height="231" key="GridCell.Tab.0.bottom/0.23.1440.877@0.0.1440.900" timestamp="1596593155597" />
     <state width="1398" height="231" key="GridCell.Tab.0.bottom/0.23.1440.877@0.23.1440.877" timestamp="1596912990310" />
-    <state width="1398" height="231" key="GridCell.Tab.0.center" timestamp="1596912990309">
-      <screen x="0" y="23" width="1440" height="877" />
+    <state width="1493" height="151" key="GridCell.Tab.0.center" timestamp="1596931951296">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
+    <state width="1493" height="151" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1596931951296" />
     <state width="1398" height="231" key="GridCell.Tab.0.center/0.23.1440.877@0.0.1440.900" timestamp="1596593155596" />
     <state width="1398" height="231" key="GridCell.Tab.0.center/0.23.1440.877@0.23.1440.877" timestamp="1596912990309" />
-    <state width="1398" height="231" key="GridCell.Tab.0.left" timestamp="1596912990309">
-      <screen x="0" y="23" width="1440" height="877" />
+    <state width="1493" height="151" key="GridCell.Tab.0.left" timestamp="1596931951296">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="1398" height="231" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1596593155591" />
+    <state width="1493" height="151" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1596931951296" />
     <state width="1398" height="242" key="GridCell.Tab.0.left/0.23.1440.877@0.0.1440.900" timestamp="1596258152736" />
     <state width="1398" height="231" key="GridCell.Tab.0.left/0.23.1440.877@0.23.1440.877" timestamp="1596912990309" />
-    <state width="1398" height="231" key="GridCell.Tab.0.right" timestamp="1596912990309">
-      <screen x="0" y="23" width="1440" height="877" />
+    <state width="1493" height="151" key="GridCell.Tab.0.right" timestamp="1596931951296">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="1398" height="286" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1596247229380" />
+    <state width="1493" height="151" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1596931951296" />
     <state width="1398" height="231" key="GridCell.Tab.0.right/0.23.1440.877@0.0.1440.900" timestamp="1596593155597" />
     <state width="1398" height="231" key="GridCell.Tab.0.right/0.23.1440.877@0.23.1440.877" timestamp="1596912990309" />
     <state width="1398" height="242" key="GridCell.Tab.1.bottom" timestamp="1596317345912">
@@ -202,6 +218,8 @@
     </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/Genetic_Algorithm_PathFinding_Movement_Method$main__1_.coverage" NAME="main (1) Coverage Results" MODIFIED="1596931951291" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Genetic_Algorithm_PathFinding/Src" />
+    <SUITE FILE_PATH="coverage/Genetic_Algorithm_PathFinding_Movement_Method$Main__1_.coverage" NAME="Main (1) Coverage Results" MODIFIED="1596914843846" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Genetic_Algorithm_PathFinding-89e188f70ae11ac20042f43172fb700d54956026" />
     <SUITE FILE_PATH="coverage/Genetic_Algorithm_PathFinding$main.coverage" NAME="main Coverage Results" MODIFIED="1596912826249" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Genetic_Algorithm_PathFinding-89e188f70ae11ac20042f43172fb700d54956026/Src" />
   </component>
 </project>

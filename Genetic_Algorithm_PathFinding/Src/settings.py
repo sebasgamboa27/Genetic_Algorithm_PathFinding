@@ -1,3 +1,5 @@
+import pygame
+from pygame.locals import *
 # define some colors (R, G, B)
 WHITE = (255, 255, 255)
 BLACK = (0, 0, 0)
@@ -10,7 +12,7 @@ BLUE = (70, 173, 212)
 PURPLE = (254,0,246)
 
 # game settings
-WIDTH = 700   # 16 * 64 or 32 * 32 or 64 * 16
+WIDTH = 1100   # 16 * 64 or 32 * 32 or 64 * 16
 HEIGHT = 700  # 16 * 48 or 32 * 24 or 64 * 12
 FPS = 60
 TITLE = "Genetic Maze"
@@ -22,3 +24,11 @@ GRIDHEIGHT = HEIGHT / TILESIZE
 
 # Player settings
 PLAYER_SPEED = 1
+
+
+#Title Images
+TITLEIMAGE = pygame.image.load('GeneticMaze.jpg')
+GENERACIONIMAGE = pygame.image.load('Generacion.jpg')
+ROBOTSIMAGE = pygame.image.load('Robots.jpg')
+FINISHEDIMAGE = pygame.image.load('Resueltos.jpg')
+
